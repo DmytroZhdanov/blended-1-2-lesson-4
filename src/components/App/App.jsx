@@ -1,50 +1,30 @@
-import { useEffect } from "react";
-import { nanoid } from "nanoid";
+import { Container, Header, SearchForm, Section, Text } from "components";
+import TodoList from "components/TodoList/TodoList";
 
-import { Container, Grid, GridItem, Header, SearchForm, Section, Text, Todo } from "components";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "redux/filterSlice";
+import { selectFilter, selectTodos } from "redux/selectors";
 
 export const App = () => {
-  const [todos, setTodos] = useState(() => JSON.parse(localStorage.getItem("todos")) ?? []);
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  const addTodo = text => {
-    const todo = {
-      id: nanoid(),
-      text,
-    };
-
-    setTodos(prevState => [...prevState, todo]);
-  };
-
-  const handleSubmit = data => {
-    addTodo(data);
-  };
-
-  const deleteTodo = id => {
-    setTodos(prevState => prevState.filter(todo => todo.id !== id));
-  };
-
+  const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
+  const todos = useSelector(selectTodos);
   return (
     <>
       <Header />
       <Section>
         <Container>
-          <SearchForm onSubmit={handleSubmit} />
+          <input
+            type="text"
+            value={filter}
+            onChange={(e) => dispatch(setFilter(e.target.value))}
+          />
+          <SearchForm />
 
-          {todos.length === 0 && <Text textAlign="center">There are no any todos ... </Text>}
-
-          <Grid>
-            {todos.length > 0 &&
-              todos.map((todo, index) => (
-                <GridItem key={todo.id}>
-                  <Todo id={todo.id} text={todo.text} counter={index + 1} onClick={deleteTodo} />
-                </GridItem>
-              ))}
-          </Grid>
+          {todos.length === 0 && (
+            <Text textAlign="center">There are no any todos ... </Text>
+          )}
+          <TodoList />
         </Container>
       </Section>
     </>

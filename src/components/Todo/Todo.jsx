@@ -1,6 +1,7 @@
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { Text } from 'components';
 import { DeleteButton, TodoWrapper } from './Todo.styled';
+import PropTypes from "prop-types";
 
 export const Todo = ({ text, counter, onClick, id }) => {
   return (
@@ -17,3 +18,10 @@ export const Todo = ({ text, counter, onClick, id }) => {
     </>
   );
 };
+
+Todo.propTypes = {
+  text: PropTypes.string.isRequired,
+  counter: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+}

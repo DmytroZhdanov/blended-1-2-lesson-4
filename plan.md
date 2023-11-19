@@ -1,21 +1,20 @@
-# Заняття 4. План
+# Lesson 4. Plan
 
 - Kahoot
-- Питання-відповідь
-- Практичне заняття
+- Question-Answer Session
+- Practical Session
 
-## Завдання
+## Tasks
 
-### Крок 1
+### Step 1
 
-Виконай рефакторинг коду застосунку **"TODO LIST"** на `react-hooks`
+Perform refactoring of the **"TODO LIST"** application using `react-hooks`
 
-### Крок 2
+### Step 2
 
-Виконай рефакторинг коду застосунку **"TODO LIST"**, додавши управління станом
-за допомогою бібліотеки [Redux Toolkit](https://redux-toolkit.js.org/).
+Refactor the **"TODO LIST"** application, implementing state management using the [Redux Toolkit](https://redux-toolkit.js.org/) library.
 
-Нехай Redux-state виглядає наступним чином.
+Let the Redux state look as follows.
 
 ```bash
 {
@@ -23,9 +22,9 @@
 }
 ```
 
-- Створи сховище з `configureStore()`
-- Створи редюсери todo. Використовуй функцію `createSlice()`.
-- Зв'яжи React-компоненти з Redux-логікою за допомогою хуків бібліотеки
+- Create a store with `configureStore()`
+- Create reducers for todos using the `createSlice()` function.
+- Connect React components to Redux logic using the hooks from the `react-redux` library
 
 ```bash
 npm install @reduxjs/toolkit react-redux
@@ -33,9 +32,6 @@ npm install @reduxjs/toolkit react-redux
 
 [react-redux](https://react-redux.js.org/).
 
-- Для зберігання всего `state` застосунку в `local storage` використовуй
-  бібліотеку [redux-persist](https://github.com/rt2zz/redux-persist#basic-usage)
+- Utilize the [redux-persist](https://github.com/rt2zz/redux-persist#basic-usage) library to store the entire application state in local storage.
 
-- використовуй цей
-  [конфіг](https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist)
-  для `store`
+- Use this [configuration](https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist) for the store
